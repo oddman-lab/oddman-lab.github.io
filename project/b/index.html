@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/glitch.css">
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+  <title>OddBooking</title>
+</head>
+<body>
+  <div class="link-wrapper">
+    <a href="/" class="backlink">Назад на сайт</a>
+  </div>
+
+<header class="header">
+  <div class="box">
+    <h1 class="glitch">OddBooking</h1>
+  </div>
+  <h1 class="visuallyhidden">OddBooking. Программисты по соседству.</h1>
+</header>
+
+<main>
+  <section class="map map--faded">
+    <div class="map__pins">
+      <div class="map__pinsoverlay"><h2>Добро пожаловать в Odd City!</h2></div>
+      <button class="map__pin map__pin--main">
+        <img src="img/main-pin-image.png" width="40" height="44" draggable="false">
+        <svg viewBox="0 0 70 70">
+          <defs>
+            <path d="M35,35m-23,0a23,23 0 1,1 46,0a23,23 0 1,1 -46,0" id="tophalf" />
+          </defs>
+
+          <ellipse cx="35" cy="35" rx="35" ry="35" fill="rgba(233, 30, 99, 0.7)"/>
+          <text><textPath xlink:href="#tophalf" startOffset="2">Нажми или потяни меня</textPath></text>
+        </svg>
+      </button>
+    </div>
+
+    <div class="map__filters-container">
+      <form action="#" class="map__filters" autocomplete="off">
+        <select name="housing-type" id="housing-type" class="map__filter">
+          <option value="any" selected>Любой тип жилья</option>
+          <option value="flat">Квартира</option>
+          <option value="house">Дом</option>
+          <option value="bungalo">Сарай</option>
+        </select>
+
+        <select name="housing-price" id="housing-price" class="map__filter">
+          <option value="any" selected>Любая</option>
+          <option value="middle">10000 - 50000&#x20bd;</option>
+          <option value="low">до 10000&#x20bd;</option>
+          <option value="high">от 50000&#x20bd;</option>
+        </select>
+
+        <select name="housing-rooms" id="housing-rooms" class="map__filter">
+          <option value="any" selected>Любое число комнат</option>
+          <option value="1">Одна комната</option>
+          <option value="2">Две комнаты</option>
+          <option value="3">Три комнаты</option>
+        </select>
+
+        <select name="housing-guests" id="housing-guests" class="map__filter">
+          <option value="any" selected>Любое число гостей</option>
+          <option value="1">Один гость</option>
+          <option value="2">Два гостя</option>
+        </select>
+
+        <fieldset id="housing-features" class="map__filter-set features">
+          <input type="checkbox" name="features" value="wifi" id="filter-wifi">
+          <label class="feature feature--wifi" for="filter-wifi">Wi-Fi</label>
+
+          <input type="checkbox" name="features" value="dishwasher" id="filter-dishwasher">
+          <label class="feature feature--dishwasher" for="filter-dishwasher">Посудомоечная машина</label>
+
+          <input type="checkbox" name="features" value="parking" id="filter-parking">
+          <label class="feature feature--parking" for="filter-parking">Парковка</label>
+
+          <input type="checkbox" name="features" value="washer" id="filter-washer">
+          <label class="feature feature--washer" for="filter-washer">Стиральная машина</label>
+
+          <input type="checkbox" name="features" value="elevator" id="filter-elevator">
+          <label class="feature feature--elevator" for="filter-elevator">Лифт</label>
+
+          <input type="checkbox" name="features" value="conditioner" id="filter-conditioner">
+          <label class="feature feature--conditioner" for="filter-conditioner">Кондиционер</label>
+         </fieldset>
+      </form>
+    </div>
+  </section>
+
+  <div class="notice">
+    <h2 class="notice__title">Подать объявление</h2>
+
+    <form class="notice__form notice__form--disabled" 
+    method="post" 
+    action="https://javascript.pages.academy/keksobooking"
+    enctype="multipart/form-data" 
+    autocomplete="off">
+
+      <fieldset class="notice__header">
+        <legend>Ваша фотография (для карты)</legend>
+        <div class="notice__photo">
+          <div class="upload">
+            <div class="notice__preview">
+              <img src="img/octopus.png" alt="Аватар пользователя"  width="40" height="44">
+            </div>
+            <input type="file" id="avatar">
+            <label class="drop-zone" for="avatar">Загрузите или&nbsp;перетащите сюда фото</label>
+            <p class="notice__info">Заполните все обязательные поля, назначьте цену, загрузите фотографии. Придумайте интересное описание. Оно сделает объявление более живым и привлекательным. Получившееся объявление должно давать гостям полное представление о вашем жилье.</p>
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset class="form__element form__element--wide">
+        <label for="title">Заголовок объявления</label>
+        <input id="title" name="title" type="text" placeholder="Милая, уютная квартирка" maxlength="100" minlength="30" required>
+      </fieldset>
+
+      <fieldset class="form__element form__element--wide">
+        <label for="address">Адрес</label>
+        <input id="address" name="address" type="text" value="468, 187" readonly>
+      </fieldset>
+
+      <fieldset class="form__element">
+        <label for="type">Тип жилья</label>
+        <select id="type" name="type">
+          <option value="flat" selected>Квартира</option>
+          <option value="bungalo">Лачуга</option>
+          <option value="house">Дом</option>
+          <option value="palace">Дворец</option>
+        </select>
+      </fieldset>
+
+      <fieldset class="form__element">
+        <label for="price">Цена за ночь, руб.</label>
+        <input id="price" name="price" type="number" placeholder="от 1000 Р/ночь" minlength="4" max="1000000" required>
+      </fieldset>
+
+      <fieldset class="form__element">
+        <label for="timein">Время заезда и выезда</label>
+        <select id="timein" name="timein">
+          <option value="12:00" selected>После 12</option>
+          <option value="13:00">После 13</option>
+          <option value="14:00">После 14</option>
+        </select>
+        <select id="timeout" name="timeout" title="Time to go out">
+          <option value="12:00" selected>Выезд до 12</option>
+          <option value="13:00">Выезд до 13</option>
+          <option value="14:00">Выезд до 14</option>
+        </select>
+      </fieldset>
+
+      <fieldset class="form__element">
+        <label for="room_number">Кол-во комнат</label>
+        <select id="room_number" name="rooms">
+          <option value="1" selected>1 комната</option>
+          <option value="2">2 комнаты</option>
+          <option value="3">3 комнаты</option>
+          <option value="100">100 комнат</option>
+        </select>
+      </fieldset>
+
+      <fieldset class="form__element">
+        <label for="capacity">Количество мест</label>
+        <select id="capacity" name="capacity">
+          <option value="3" selected>для 3 гостей</option>
+          <option value="2">для 2 гостей</option>
+          <option value="1">для 1 гостя</option>
+          <option value="0">не для гостей</option>
+        </select>
+      </fieldset>
+
+      <fieldset class="form__element features form__element--wide">
+        <legend>Удобства: Wi-Fi, кухня, парковка, стиралка, лифт, кондиционер</legend>
+
+        <input type="checkbox" name="features" value="wifi" id="feature-wifi">
+        <label class="feature feature--wifi" for="feature-wifi">Wi-Fi</label>
+
+        <input type="checkbox" name="features" value="dishwasher" id="feature-dishwasher">
+        <label class="feature feature--dishwasher" for="feature-dishwasher">Посудомоечная машина</label>
+
+        <input type="checkbox" name="features" value="parking" id="feature-parking">
+        <label class="feature feature--parking" for="feature-parking">Парковка</label>
+
+        <input type="checkbox" name="features" value="washer" id="feature-washer">
+        <label class="feature feature--washer" for="feature-washer">Стиральная машина</label>
+
+        <input type="checkbox" name="features" value="elevator" id="feature-washer">
+        <label class="feature feature--elevator" for="feature-washer">Лифт</label>
+
+        <input type="checkbox" name="features" value="conditioner" id="feature-conditioner">
+        <label class="feature feature--conditioner" for="feature-conditioner">Кондиционер</label>
+      </fieldset>
+
+      <fieldset class="form__element form__element--wide">
+        <label for="description">Описание (не обязательно)</label>
+        <textarea id="description" name="description" placeholder="Здесь расскажите о том, какое ваше жилье замечательное и вообще"></textarea>
+      </fieldset>
+
+      <fieldset class="form__element form__element--wide">
+        <label>Фотографии жилья</label>
+        <div class="form__photo-container">
+          <div class="upload">
+            <input type="file" id="images">
+            <label for="images" class="drop-zone">Загрузите или&nbsp;перетащите сюда фото</label>
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset class="form__element form__element--submit">
+        <button class="form__submit" type="submit">Опубликовать</button>
+        или <button class="form__reset" type="reset">очистить</button>
+      </fieldset>
+    </form>
+    <div class="success-message visuallyhidden">
+      <h1 class="sucess-message__title">Ваше объявление <span>успешно</span> отправлено!</h1>
+      <p class="sucess-message__text">
+        В скором времени мы пришлем вам уведомление, что ваше объявление прошло модерацию. (нет)
+        👽
+      </p>
+    </div>
+  </div>
+</main>
+
+<footer class="footer container">
+  <div class="center-wrapper">
+    <section class="footer-logo">
+      Идея проекта HTML Academy &copy; 2017 <br>
+      Реализация и стилизация Oddman 2020
+    </section>
+    <nav class="footer-social">
+      <a href="https://github.com/oddman-lab/booking-pet-project" class="footer-social-item footer-social-item-git" target="_blank" rel="nofollow">GitHub</a>
+    </nav>
+  </div>
+</footer>
+
+<template>
+  <article class="map__card popup">
+    <img src="" class="popup__avatar" width="70" height="70">
+    <button class="popup__close">Закрыть</button>
+    <h3 class="popup__title"></h3>
+    <p class="popup__text--address"><small></small></p>
+    <p class="popup__text--price"></p>
+    <h4 class="popup__type"></h4>
+    <p class="popup__text--capacity"></p>
+    <p class="popup__text--time"></p>
+    <ul class="popup__features">
+    </ul>
+    <p class="popup__description"></p>
+    <ul class="popup__pictures ">
+
+    </ul>
+  </article>
+
+  <button style="left: 200px; top: 400px;" class="map__pin pin--similar">
+    <img src="img/avatars/user07.png" width="40" height="40" draggable="false">
+  </button>
+</template>
+<script src="js/backend.js"></script>
+<script src="js/dnd.js"></script>
+<script src="js/generateLayout.js"></script>
+<script src="js/render.js"></script>
+<script src="js/switchState.js"></script>
+<script src="js/startListening.js"></script>
+<script src="js/debounce.js"></script>
+<script src="js/form.js"></script>
+<script src="js/filter.js"></script>
+</body>
+</html>
