@@ -43,38 +43,54 @@ window.addEventListener('scroll', (evt) => {
     }
 });
 
-let itemCard = document.querySelectorAll('.item')
-let modal = {
-  booking: 'showBooking',
-  calc: 'showCalc',
-  task: 'showTask',
-  cinema: 'showCinema',
-}
 
+let projectButton = document.querySelectorAll('.item__button')
+let modalWindows = document.querySelectorAll('.modal')
+let closeButtons = document.querySelectorAll('.close-modal') 
 
-
-for (let i = 0; i < itemCard.length; i++) {
-  itemCard[i].addEventListener('click', (evt) => {
-    if (evt.target.classList.contains('item')) {
-      console.log(modal[evt.target.querySelector('.item__button').getAttribute('data-modal')])
-    }
-  })
-}
-
-let modale = document.querySelector('.modal')
-let button = document.querySelectorAll('.item__button')
-
-for (let j = 0; j < button.length; j++) {
-  button[j].addEventListener('click', (evt) => {
+for (let j = 0; j < projectButton.length; j++) {
+  projectButton[j].addEventListener('click', (evt) => {
     modalEventHandler(evt)
   });
 }
 
-function modalEventHandler(event) {
-  console.log(modal[event.target.getAttribute('data-modal')])
-  modale.classList.remove('visually-hidden')
-
+for (let closeButton of closeButtons) {
+  closeButton.addEventListener('click', evt => {
+    modalEventHandler(evt)
+  })
 }
+
+function modalEventHandler(event) {
+  let openEvent = event.target.getAttribute('data-modal');
+  let closeEvent = event.target.parentNode.parentNode.getAttribute('data-modal');
+
+  for (let modal of modalWindows) {
+    if (openEvent === modal.getAttribute('data-modal')) {
+      showModal(modal);
+
+      document.addEventListener('keydown', evt => {
+        isEscKeycode(evt, modal);
+      })
+    } 
+    if (closeEvent === modal.getAttribute('data-modal')) {
+      closeModal(modal);
+    }
+  }
+}
+
+function showModal(modal) {
+  modal.classList.remove('hide');
+  document.querySelector('.fixed-overlay').classList.remove('visually-hidden');
+}
+
+function closeModal(modal) {
+  modal.classList.add('hide');
+  document.querySelector('.fixed-overlay').classList.add('visually-hidden');
+}
+
+let isEscKeycode = (evt, openedModal) => evt.keyCode === 27 ? closeModal(openedModal) : undefined;
+
+/* МОБИЛЬНОЕ МЕНЮ */
 
 let navList = document.querySelector('.navigation__list')
 let navigation = navList.querySelectorAll('li:not(.navigation__item--logo)')
