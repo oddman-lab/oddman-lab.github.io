@@ -128,3 +128,29 @@ document.addEventListener('resize', (evt) => {
     check(true);
   }
 })
+
+/*---------- Костыль для отступов на Firefox */
+
+function defineBrowser() {
+	let userBrowser = navigator.userAgent;
+	
+    if (userBrowser.search(/MSIE/) > 0) return 'Internet Explorer';
+    if (userBrowser.search(/Firefox/) > 0) return 'Firefox';
+    if (userBrowser.search(/Opera/) > 0) return 'Opera';
+    if (userBrowser.search(/Chrome/) > 0) return 'Google Chrome';
+    if (userBrowser.search(/Safari/) > 0) return 'Safari';
+
+    if (userBrowser.search(/Gecko/) > 0) return 'Gecko';
+
+    return 'Search Bot';
+}
+
+if (defineBrowser() === "Firefox") {
+  let cardItem = document.querySelectorAll('.card__item');
+  document.querySelector('.welcome').style.backgroundColor = '#b885b6';
+  document.querySelector('.education').style.backgroundColor = '#272e2f';
+
+  cardItem.forEach(item => {
+    item.style.marginLeft = -4 + 'px';
+  })
+}
