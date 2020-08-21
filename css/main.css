@@ -404,6 +404,10 @@ input[type="radio"].visually-hidden {
     margin-left: 20px;
     list-style: none;
     font-size: 14px; }
+  .personal h4 br {
+    display: none; }
+  .personal__sublist {
+    padding: 0; }
   /*----------------------------------------*/
   /*---------- Модальнок окно --------------*/
   /*----------------------------------------*/
@@ -1041,7 +1045,8 @@ input[type="radio"].visually-hidden {
       padding: 0;
       position: relative; }
     .card__item {
-      font-size: 16px; }
+      font-size: 16px;
+      margin-left: -2px; }
       .card__item::before {
         top: -50px; }
       .card__item::before, .card__item::after {
@@ -1050,7 +1055,7 @@ input[type="radio"].visually-hidden {
         position: absolute;
         width: 1px;
         height: 100%;
-        left: -20px; }
+        left: -22px; }
       .card__item::marker {
         font-size: 24px;
         color: #ffcc80; }
@@ -1110,7 +1115,7 @@ input[type="radio"].visually-hidden {
     .skills__item .fa-vuejs {
       color: #000000; }
   .personal .card__subtitle {
-    margin-right: 63px; }
+    margin-right: -217px; }
   .personal__item::before, .personal__item::after {
     background-color: #000000; }
   .personal__item::marker {
@@ -1129,8 +1134,8 @@ input[type="radio"].visually-hidden {
       content: "";
       position: absolute;
       top: 13px;
-      left: -35px;
-      width: 20px;
+      left: -34px;
+      width: 19px;
       height: 1px;
       background-color: #000000; }
     .subitem::after {
