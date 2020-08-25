@@ -8,7 +8,7 @@
 /* Colors */
 body {
   background-color: #000000;
-  background-image: url("/img/Pattern.png");
+  background-image: url("../img/Pattern.png");
   background-position: 50% 50%;
   background-size: cover;
   -webkit-box-sizing: border-box;
@@ -94,7 +94,7 @@ input[type="radio"].visually-hidden {
     border: 4px solid #1698d9;
     border-radius: 10px;
     background-color: #f2f2f2;
-    background-image: url("/img/cat.jpg");
+    background-image: url("../img/cat.jpg");
     background-size: 365px;
     background-repeat: no-repeat;
     background-position: 55% 173%;
