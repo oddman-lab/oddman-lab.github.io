@@ -401,7 +401,10 @@ input[type="radio"].visually-hidden {
     font-size: 18px;
     font-weight: bold; }
   .card__spoiler summary {
-    font-weight: 700; }
+    margin-top: 25px;
+    list-style: none; }
+    .card__spoiler summary::-webkit-details-marker {
+      display: none; }
   .card__spoiler ul {
     margin: 0;
     padding: 0; }
@@ -1454,3 +1457,14 @@ input[type="radio"].visually-hidden {
   -o-transition: all 0.25s ease-in;
   transition: all 0.25s ease-in;
   opacity: 0; }
+
+details summary:before {
+  content: '\f067';
+  color: #80ffcc;
+  font-family: "Font Awesome 5 free";
+  font-weight: 900;
+  margin-right: 7px; }
+
+/* Добавляем собственный маркер для открытого состояния */
+details[open] summary:before {
+  content: '\f068'; }
