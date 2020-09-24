@@ -2333,17 +2333,17 @@ pre.xdebug-var-dump {
     .footer__social-link + .footer__social-link {
       margin-left: 1rem; }
     .footer__social-link--fb {
-      background: url("/img/icon_soc-fb.svg") no-repeat 50% 50%; }
+      background: url("../img/icon_soc-fb.svg") no-repeat 50% 50%; }
       .footer__social-link--fb:hover {
-        background: url("/img/icon_soc-fb--filled.svg") no-repeat 50% 50%; }
+        background: url("../img/icon_soc-fb--filled.svg") no-repeat 50% 50%; }
     .footer__social-link--in {
-      background: url("/img/icon_soc-in.svg") no-repeat 50% 50%; }
+      background: url("../img/icon_soc-in.svg") no-repeat 50% 50%; }
       .footer__social-link--in:hover {
-        background: url("/img/icon_soc-in--filled.svg") no-repeat 50% 50%; }
+        background: url("../img/icon_soc-in--filled.svg") no-repeat 50% 50%; }
     .footer__social-link--tw {
-      background: url("/img/icon_soc-tw.svg") no-repeat 50% 50%; }
+      background: url("../img/icon_soc-tw.svg") no-repeat 50% 50%; }
       .footer__social-link--tw:hover {
-        background: url("/img/icon_soc-tw--filled.svg") no-repeat 50% 50%; }
+        background: url("../img/icon_soc-tw--filled.svg") no-repeat 50% 50%; }
 
 @media only screen and (max-width: 768px) {
   .footer__nav {
@@ -3111,7 +3111,7 @@ body {
     font-size: 14px;
     font-family: 'Roboto';
     position: relative;
-    background-image: url("img/icon_search.svg");
+    background-image: url("../img/icon_search.svg");
     background-repeat: no-repeat;
     background-position: 5% 50%; }
     .search-form__input::-webkit-input-placeholder {
