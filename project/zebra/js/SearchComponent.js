@@ -1,17 +1,11 @@
 import { links, removeAllNews, getSearchResult } from './utils.js';
-import { getNews } from './main.js';
+import { getNews, buttonContainer } from './main.js';
 
 export default class SearchComponent {
   constructor(container) {
-    this.element = this.getTemplate();
+    this.element = null;
     this.input = null;
     this.container = container;
-  }
-
-  getTemplate() {
-    return `
-        <input type="text" class="serch-form__input search" placeholder="Поиск" />
-    `;
   }
 
   init() {
@@ -26,8 +20,9 @@ export default class SearchComponent {
   }
 
   setStyles() {
-    this.element.type = 'text';
-    this.element.classList.add('serch-form__input', 'search');
+    this.element.type = 'search';
+    this.element.classList.add('search-form__input', 'search');
+    this.element.setAttribute('id', 'search');
     this.element.placeholder = 'Поиск';
   }
 
@@ -37,7 +32,15 @@ export default class SearchComponent {
 
   onSearchHandler(evt) {
     evt.preventDefault();
+    isButtonVisible();
     removeAllNews();
     getSearchResult(getNews(links.searchLoad));
+  }
+}
+
+function isButtonVisible() {
+  if (buttonContainer.classList.contains('hide')) {
+    buttonContainer.removeChild(buttonContainer.lastElementChild);
+    buttonContainer.classList.remove('hide');
   }
 }

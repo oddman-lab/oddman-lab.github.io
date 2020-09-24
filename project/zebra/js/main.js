@@ -7,6 +7,7 @@ import { links, loadNews, showError } from './utils.js';
 const form = document.querySelector('form');
 export const loadMore = document.querySelector('.button--load-more');
 export const newsList = document.querySelector('.news');
+export const buttonContainer = document.querySelector('.news-wrapper');
 
 const cardItemInstance = new NewsCardComponent(newsList);
 const searchBoxInstance = new SearchComponent(form);

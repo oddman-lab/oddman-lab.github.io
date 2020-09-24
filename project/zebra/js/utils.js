@@ -1,4 +1,4 @@
-import { loadMore, newsList, getNews } from './main.js';
+import { loadMore, newsList, buttonContainer, getNews } from './main.js';
 
 export function removeAllNews() {
   while (newsList.firstChild) {
@@ -23,8 +23,20 @@ export const links = {
   error: 'https://my-json-server.typicode.com/bigfootdary/json-news/news-not-found',
 };
 
-export const loadNews = () => {
+async function isAllNewsShown(link) {
+  const response = await fetch(link);
+  const result = await response.json();
+  if (result.page.current === result.page.total) {
+    const message = document.createElement('p');
+    message.textContent = 'Все новости загружены';
+    buttonContainer.appendChild(message);
+    setTimeout(() => {
+      buttonContainer.classList.add('hide');
+    }, 1000);
+  }
+}
+
+export function loadNews() {
   getNews(links.loadMore);
-  loadMore.removeEventListener('click', loadNews);
-  loadMore.style.display = 'none';
-};
+  isAllNewsShown(links.loadMore);
+}
