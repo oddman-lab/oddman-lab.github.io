@@ -3025,6 +3025,9 @@ body {
       .news__card--main-news .news__date,
       .news__card--main-news .news__tags {
         color: #fff; }
+      .news__tags {
+        color: #97999b;;
+      }
       .news__card--main-news .news__title {
         font-size: 32px;
         line-height: 41px;
@@ -3091,9 +3094,9 @@ body {
     margin-left: 24px; }
 
 .hide {
-  -webkit-transform: translateY(220px);
-      -ms-transform: translateY(220px);
-          transform: translateY(220px); }
+  -webkit-transform: translateY(999px);
+      -ms-transform: translateY(999px);
+          transform: translateY(999px); }
 
 .search-form {
   margin-left: 24px;
