@@ -5,14 +5,14 @@ export default class NewsCardComponent {
   }
 
   getTemplate(news) {
-    const { date, title, theme } = news;
+    const { date, title, theme, spotlight } = news;
 
     return `
           <p class="news__date">${date}</p>
           <h3 class="news__title">
               ${title}
           </h3>
-          <p class="news__tags">${theme}</p>
+          <p class="news__tags">${spotlight ? 'В центре внимания' : theme}</p>
           `;
   }
 
