@@ -216,7 +216,7 @@ input[type='radio'].visually-hidden {
       color: #ffffff;
       background-color: #282a36; }
     .section--fun {
-      background-color: #fcc930; }
+      background-color: #facd34; }
       .section--fun img {
         width: 400px;
         height: auto; }
@@ -224,7 +224,7 @@ input[type='radio'].visually-hidden {
   /*-------------------------------------------------*/
   /*-------------------------------------------------*/
   .welcome {
-    background-color: #b47db7;
+    background-color: #bb8abf;
     border-radius: 20px;
     -webkit-box-shadow: 0 5px 7px rgba(0, 0, 0, 0.4);
             box-shadow: 0 5px 7px rgba(0, 0, 0, 0.4);
@@ -776,7 +776,7 @@ input[type='radio'].visually-hidden {
       font-size: 24px;
       font-weight: 900; }
   .welcome {
-    background-color: #b47db7;
+    background-color: #bb8abf;
     border-radius: 20px;
     -webkit-box-shadow: 0 5px 7px rgba(0, 0, 0, 0.4);
             box-shadow: 0 5px 7px rgba(0, 0, 0, 0.4);
