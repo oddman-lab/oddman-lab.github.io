@@ -90,21 +90,111 @@
 /*!*******************************!*\
   !*** ./src/assets/js/main.js ***!
   \*******************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
+/*! exports provided: container */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "container", function() { return container; });
+/* harmony import */ var _userComponent__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./userComponent */ "./src/assets/js/userComponent.js");
+/* harmony import */ var _mock__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./mock */ "./src/assets/js/mock.js");
+
+
 
 const addContactBtn = document.querySelector('.button--new');
 const newContactWindow = document.querySelector('.create-contact');
-
-addContactBtn.addEventListener('click', () => {
-  newContactWindow.classList.toggle('hide');
-});
-
 const newContactForm = document.querySelector('.create-contact__form');
 const nameFiled = newContactForm.querySelector('input[type="text"]');
 const phoneFiled = newContactForm.querySelector('input[type="tel"]');
 const mailFiled = newContactForm.querySelector('input[type="email"]');
+const searchForm = document.querySelector('.search');
+const searchField = searchForm.querySelector('input[type="search"]');
+const refreshBtn = document.querySelector('.button--refresh');
 const container = document.querySelector('.contacts__list');
+let userInstance;
+
+searchForm.addEventListener('submit', (evt) => {
+  evt.preventDefault();
+  const contactsList = container.querySelectorAll('input[name="name"]');
+
+  Array.from(contactsList)
+    .filter((item) => item.value.split(' ')[0] !== searchField.value)
+    .forEach((element) => {
+      console.log(element);
+      element.closest('li').classList.add('visually-hidden');
+    });
+});
+
+addContactBtn.addEventListener('click', () => {
+  newContactWindow.classList.toggle('hide');
+  setTimeout(() => (newContactWindow.getElementsByClassName.zIndex = '0'));
+});
+
+refreshBtn.addEventListener('click', () => {
+  container.querySelectorAll('li').forEach((el) => el.classList.remove('visually-hidden'));
+  searchField.value = '';
+});
+
+newContactForm.addEventListener('submit', (evt) => {
+  evt.preventDefault();
+  userInstance = new _userComponent__WEBPACK_IMPORTED_MODULE_0__["default"](nameFiled.value, mailFiled.value, phoneFiled.value).init();
+
+  newContactForm.reset();
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+  _mock__WEBPACK_IMPORTED_MODULE_1__["mockUsers"].forEach((user) => {
+    userInstance = new _userComponent__WEBPACK_IMPORTED_MODULE_0__["default"](user.name, user.email, user.telephone).init();
+  });
+});
+
+
+/***/ }),
+
+/***/ "./src/assets/js/mock.js":
+/*!*******************************!*\
+  !*** ./src/assets/js/mock.js ***!
+  \*******************************/
+/*! exports provided: mockUsers */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "mockUsers", function() { return mockUsers; });
+const mockUsers = [
+  {
+    name: 'Илья Алексеевич',
+    email: 'ilya.shcoder@gmail.com',
+    telephone: '+7(911)***-30-91',
+  },
+  {
+    name: 'Олег Волож',
+    email: 'tinkoff-sold@yandex.ru',
+    telephone: '+7(900)900-01-01',
+  },
+  {
+    name: 'Брендан Эйх',
+    email: 'javascript@mozilla.org',
+    telephone: '+7(921)999-20-90',
+  },
+];
+
+
+/***/ }),
+
+/***/ "./src/assets/js/userComponent.js":
+/*!****************************************!*\
+  !*** ./src/assets/js/userComponent.js ***!
+  \****************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return User; });
+/* harmony import */ var _main__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./main */ "./src/assets/js/main.js");
+
+
 let counter = 0;
 
 class User {
@@ -150,7 +240,7 @@ class User {
 
   init() {
     this.createElement();
-    container.appendChild(this._element);
+    _main__WEBPACK_IMPORTED_MODULE_0__["container"].appendChild(this._element);
     this.setListener();
   }
 
@@ -181,41 +271,10 @@ class User {
       clickTarget.closest('li').classList.toggle('contacts__item--editable');
       clickTarget.classList.toggle('button--save');
     } else if (clickTarget.classList.contains('button--remove')) {
-      container.removeChild(clickTarget.closest('li'));
+      _main__WEBPACK_IMPORTED_MODULE_0__["container"].removeChild(clickTarget.closest('li'));
     }
   }
 }
-
-let userInstance;
-
-newContactForm.addEventListener('submit', (evt) => {
-  evt.preventDefault();
-  userInstance = new User(nameFiled.value, mailFiled.value, phoneFiled.value).init();
-
-  newContactForm.reset();
-});
-
-const searchForm = document.querySelector('.search');
-const searchField = searchForm.querySelector('input[type="search"]');
-
-searchForm.addEventListener('submit', (evt) => {
-  evt.preventDefault();
-  const contactsList = container.querySelectorAll('input[name="name"]');
-
-  let searchResult = [];
-  searchResult = Array.from(contactsList)
-    .filter((item) => item.value.split(' ')[0] !== searchField.value)
-    .forEach((element) => {
-      console.log(element);
-      element.closest('li').classList.add('visually-hidden');
-    });
-});
-
-const refreshBtn = document.querySelector('.button--refresh');
-
-refreshBtn.addEventListener('click', () => {
-  container.querySelectorAll('li').forEach((el) => el.classList.remove('visually-hidden'));
-});
 
 
 /***/ })
